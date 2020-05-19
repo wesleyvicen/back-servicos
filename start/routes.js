@@ -23,3 +23,11 @@ Route.group(() => {
   Route.delete("delete", "ProfessionController.destroy");
   Route.put("update", "ProfessionController.update");
 }).prefix("profession");
+
+Route.group(() => {
+  Route.get("lists/:idx", "UserController.index");
+  Route.get("list/:id", "UserController.show");
+  Route.post("add/:idx", "UserController.store");
+  Route.delete("delete/:id", "UserController.destroy");
+  Route.put("update/:id", "UserController.update");
+}).prefix("user");
