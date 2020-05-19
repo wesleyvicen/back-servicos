@@ -14,10 +14,10 @@ class UserController {
   }
 
   async store({ request, response }) {
-    const data2 = request.only(User.fillable());
+    const data = request.only(User.fillable());
 
     const user = await User.create({
-      ...data2,
+      ...data,
       profession_id: request.params.idx,
     });
 

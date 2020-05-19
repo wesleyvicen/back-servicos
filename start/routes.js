@@ -18,16 +18,16 @@ const Route = use("Route");
 
 Route.group(() => {
   Route.get("lists", "ProfessionController.index");
-  Route.get("list:id", "ProfessionController.show");
+  Route.get("list/:id", "ProfessionController.show");
   Route.post("add", "ProfessionController.store");
-  Route.delete("delete", "ProfessionController.destroy");
-  Route.put("update", "ProfessionController.update");
+  Route.delete("delete/:id", "ProfessionController.destroy");
+  Route.put("update/:id", "ProfessionController.update");
 }).prefix("profession");
 
 Route.group(() => {
   Route.get("lists/:idx", "UserController.index");
-  Route.get("list/:id", "UserController.show");
+  Route.get(":id/list/:idx", "UserController.show");
   Route.post("add/:idx", "UserController.store");
-  Route.delete("delete/:id", "UserController.destroy");
+  Route.delete(":idx/delete/:id", "UserController.destroy");
   Route.put("update/:id", "UserController.update");
 }).prefix("user");
