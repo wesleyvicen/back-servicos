@@ -4,12 +4,25 @@ const Profession = use("App/Models/Profession");
 const User = use("App/Models/User");
 
 class UserController {
+  /*
   async index({ params, request, response }) {
+
     const { page = 1, limit = 10 } = request.headers();
 
-    const profession = await Profession.findOrFail(request.params.idx);
+    const profession = await Profession.findOrFail(request.params.id);
 
     const user = await profession.users().paginate(page, limit);
+    return user
+    ;
+  }
+  */
+
+  async index({ params: { id }, request, response, view }) {
+    const { page = 1, limit = 10 } = request.headers();
+    const user = await User.query()
+      .where({ id })
+      .with("contacts")
+      .paginate(page, limit);
     return user;
   }
 
@@ -18,7 +31,7 @@ class UserController {
 
     const user = await User.create({
       ...data,
-      profession_id: request.params.idx,
+      profession_id: request.params.id,
     });
 
     return response.status(201).send(user);

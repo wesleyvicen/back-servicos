@@ -25,9 +25,9 @@ Route.group(() => {
 }).prefix("profession");
 
 Route.group(() => {
-  Route.get("lists/:idx", "UserController.index");
+  Route.get("lists/:id", "UserController.index");
   Route.get(":id/list/:idx", "UserController.show");
-  Route.post("add/:idx", "UserController.store");
+  Route.post("add/:id", "UserController.store");
   Route.delete(":idx/delete/:id", "UserController.destroy");
   Route.put("update/:id", "UserController.update");
 }).prefix("user");

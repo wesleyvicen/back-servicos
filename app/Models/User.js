@@ -8,6 +8,10 @@ class User extends Model {
     return this.belongsTo("App/Models/Profession");
   }
 
+  contacts() {
+    return this.hasMany("App/Models/Contact");
+  }
+
   static fillable() {
     return ["name", "urlImage", "active", "servicos", "profession_id"];
   }
