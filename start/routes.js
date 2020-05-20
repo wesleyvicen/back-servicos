@@ -31,3 +31,7 @@ Route.group(() => {
   Route.delete(":idx/delete/:id", "UserController.destroy");
   Route.put("update/:id", "UserController.update");
 }).prefix("user");
+
+Route.group(() => {
+  Route.post("add", "UserController.storeContact");
+}).prefix("contact");

@@ -2,6 +2,7 @@
 
 const Profession = use("App/Models/Profession");
 const User = use("App/Models/User");
+const Contact = use("App/Models/Contact");
 
 class UserController {
   /*
@@ -20,7 +21,7 @@ class UserController {
   async index({ params: { id }, request, response, view }) {
     const { page = 1, limit = 10 } = request.headers();
     const user = await User.query()
-      .where({ id })
+      .where({ profession_id: id })
       .with("contacts")
       .paginate(page, limit);
     return user;
@@ -35,6 +36,12 @@ class UserController {
     });
 
     return response.status(201).send(user);
+  }
+
+  async storeContact({ request, response }) {
+    const data = request.only(Contact.fillable());
+    const contact = await Contact.create(data);
+    return contact;
   }
 
   async show({ params, request, response }) {
