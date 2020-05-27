@@ -33,7 +33,7 @@ Route.group(() => {
 }).prefix("subcategory");
 
 Route.group(() => {
-  Route.get("lists", "ProfessionalsController.index");
+  Route.get("lists/:id", "ProfessionalsController.index");
   Route.get("list/:id", "ProfessionalsController.show");
   Route.post("add", "ProfessionalsController.store");
   Route.delete("delete/:id", "ProfessionalsController.destroy");

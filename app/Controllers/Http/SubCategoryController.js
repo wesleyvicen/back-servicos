@@ -1,6 +1,7 @@
 "use strict";
 
 const SubCategory = use("App/Models/SubCategory");
+const Category = use("App/Models/Category");
 
 class SubCategoryController {
   async index({ params: { id }, request, response, view }) {
@@ -22,14 +23,14 @@ class SubCategoryController {
     return response.status(201).send(sub);
   }
   async show({ params, request, response }) {
-    const { idx, id } = request.params;
-    const sub = await SubCategory.query()
+    const { id } = request.params;
+    const { page = 1, limit = 10 } = request.headers();
+    const sub = await Category.query()
       .where({
         id: id,
-        category_id: idx,
       })
-      .with("sub_categories")
-      .first();
+      .with("sub_categories.categories")
+      .paginate(page, limit);
 
     if (sub === null) return response.status(404).send();
 

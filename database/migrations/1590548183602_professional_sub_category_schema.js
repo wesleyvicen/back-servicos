@@ -12,7 +12,8 @@ class CategoryUserSchema extends Schema {
         .unsigned()
         .notNullable()
         .references("id")
-        .inTable("categories")
+        .inTable("sub_categories")
+        .onDelete("CASCADE")
         .onUpdate("CASCADE");
       table
         .integer("professional_id")
@@ -20,6 +21,7 @@ class CategoryUserSchema extends Schema {
         .notNullable()
         .references("id")
         .inTable("professionals")
+        .onDelete("CASCADE")
         .onUpdate("CASCADE");
       table.timestamps();
     });
