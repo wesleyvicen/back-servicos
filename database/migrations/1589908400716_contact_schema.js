@@ -9,13 +9,6 @@ class ContactSchema extends Schema {
       table.increments();
       table.string("num");
       table.boolean("whatsapp");
-      table
-        .integer("user_id")
-        .unsigned()
-        .notNullable()
-        .references("id")
-        .inTable("users")
-        .onUpdate("CASCADE");
       table.timestamps();
     });
   }

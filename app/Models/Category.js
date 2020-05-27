@@ -3,9 +3,9 @@
 /** @type {typeof import('@adonisjs/lucid/src/Lucid/Model')} */
 const Model = use("Model");
 
-class Profession extends Model {
-  users() {
-    return this.hasMany("App/Models/User");
+class Category extends Model {
+  sub_categories() {
+    return this.hasMany("App/Models/SubCategory");
   }
 
   static fillable() {
@@ -13,4 +13,4 @@ class Profession extends Model {
   }
 }
 
-module.exports = Profession;
+module.exports = Category;

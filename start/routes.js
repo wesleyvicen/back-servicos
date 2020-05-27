@@ -17,20 +17,28 @@
 const Route = use("Route");
 
 Route.group(() => {
-  Route.get("lists", "ProfessionController.index");
-  Route.get("list/:id", "ProfessionController.show");
-  Route.post("add", "ProfessionController.store");
-  Route.delete("delete/:id", "ProfessionController.destroy");
-  Route.put("update/:id", "ProfessionController.update");
-}).prefix("profession");
+  Route.get("lists", "CategoryController.index");
+  Route.get("list/:id", "CategoryController.show");
+  Route.post("add", "CategoryController.store");
+  Route.delete("delete/:id", "CategoryController.destroy");
+  Route.put("update/:id", "CategoryController.update");
+}).prefix("category");
 
 Route.group(() => {
-  Route.get("lists/:id", "UserController.index");
-  Route.get(":id/list/:idx", "UserController.show");
-  Route.post("add/:id", "UserController.store");
-  Route.delete(":idx/delete/:id", "UserController.destroy");
-  Route.put("update/:id", "UserController.update");
-}).prefix("user");
+  Route.get("lists/:id", "SubCategoryController.index");
+  Route.get(":id/list/:idx", "SubCategoryController.show");
+  Route.post("add/:id", "SubCategoryController.store");
+  Route.delete(":idx/delete/:id", "SubCategoryController.destroy");
+  Route.put("update/:id", "SubCategoryController.update");
+}).prefix("subcategory");
+
+Route.group(() => {
+  Route.get("lists", "ProfessionalsController.index");
+  Route.get("list/:id", "ProfessionalsController.show");
+  Route.post("add", "ProfessionalsController.store");
+  Route.delete("delete/:id", "ProfessionalsController.destroy");
+  Route.put("update/:id", "ProfessionalsController.update");
+}).prefix("profession");
 
 Route.group(() => {
   Route.post("add", "UserController.storeContact");
