@@ -8,7 +8,7 @@ class ProfessionalSchema extends Schema {
     this.create("professionals", (table) => {
       table.increments();
       table.string("name");
-      table.string("urlImage");
+      table.string("urlImage").defaultTo("https://i.imgur.com/72qUAcc.png");
       table.string("description");
       table.boolean("active");
       table.timestamps();
