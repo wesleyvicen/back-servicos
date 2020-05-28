@@ -1,15 +1,16 @@
 "use strict";
 const Professional = use("App/Models/Professional");
 const SubCategory = use("App/Models/SubCategory");
+const Contact = use("App/Models/Contact");
 
 class ProfessionController {
   async index({ request, response, view }) {
-    //    const professional = await Professional.all();
-    //    return professional;
-
     const { page = 1, limit = 10 } = request.headers();
     const subCategory = await SubCategory.findOrFail(request.params.id);
-    const professional = await subCategory.professional().paginate(page, limit);
+    const professional = await subCategory
+      .professional()
+      .with("contact")
+      .paginate(page, limit);
     return professional;
   }
 
@@ -21,6 +22,12 @@ class ProfessionController {
       await professional.load("subCategories");
     }
     return professional;
+  }
+
+  async storeContact({ request, response }) {
+    const data = request.only(Contact.fillable());
+    const contact = await Contact.create(data);
+    return contact;
   }
 
   async show({ params, request, response, view }) {}

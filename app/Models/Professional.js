@@ -8,6 +8,10 @@ class Professional extends Model {
     return this.belongsToMany("App/Models/SubCategory");
   }
 
+  contact() {
+    return this.hasMany("App/Models/Contact");
+  }
+
   static fillable() {
     return ["name", "urlImage", "description", "active", "subCategories"];
   }

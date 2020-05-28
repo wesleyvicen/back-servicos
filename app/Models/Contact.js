@@ -4,8 +4,12 @@
 const Model = use("Model");
 
 class Contact extends Model {
+  professional() {
+    return this.belongsTo("App/Models/Professional");
+  }
+
   static fillable() {
-    return ["num", "whatsapp", "user_id"];
+    return ["num", "whatsapp", "professional_id"];
   }
 }
 

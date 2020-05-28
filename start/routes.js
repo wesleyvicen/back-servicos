@@ -41,5 +41,5 @@ Route.group(() => {
 }).prefix("profession");
 
 Route.group(() => {
-  Route.post("add", "UserController.storeContact");
+  Route.post("add", "ProfessionalsController.storeContact");
 }).prefix("contact");
